@@ -133,12 +133,12 @@ EOF
 
 resource "aws_iam_instance_profile" "jenkins" {
     name = "jenkins"
-    roles = ["${aws_iam_role.jenkins.name}"]
+    role = "${aws_iam_role.jenkins.name}"
 }
 
 resource "aws_iam_instance_profile" "demo-app" {
     name = "demo-app"
-    roles = ["${aws_iam_role.demo-app.name}"]
+    role = "${aws_iam_role.demo-app.name}"
 }
 
 resource "aws_iam_policy" "common" {
@@ -357,7 +357,7 @@ git config --system credential.UseHttpPath true
 # Clone the Salt repository
 git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/salt /srv/salt; chmod 700 /srv/salt
 # Install SaltStack
-yum -y install https://repo.saltstack.com/yum/amazon/salt-amzn-repo-latest-1.ami.noarch.rpm
+yum -y install https://repo.saltstack.com/yum/amazon/salt-amzn-repo-2016.11-1.amzn1.noarch.rpm
 yum clean expire-cache; yum -y install salt-minion; chkconfig salt-minion off
 # Put custom minion config in place (for enabling masterless mode)
 cp -r /srv/salt/minion.d /etc/salt/

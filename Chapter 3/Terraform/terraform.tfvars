@@ -1,4 +1,4 @@
-autoscaling-group-image-id = "ami-08111162"
+autoscaling-group-image-id = "ami-c58c1dd3"
 autoscaling-group-instance-type = "t2.nano"
 autoscaling-group-key-name = "terraform"
 autoscaling-group-maxsize = "1"

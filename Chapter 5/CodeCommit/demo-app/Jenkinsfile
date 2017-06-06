@@ -10,12 +10,12 @@ node {
     echo "Proceeding with Git hash: ${gitHash}"
   
   stage "Run tests"
-    sh "docker run -v \$(pwd):/app --rm phpunit/phpunit tests/"
+    sh "docker run -v \$(pwd):/app --rm phpunit/phpunit:5.7.12 tests/"
 
   stage "Build RPM"
     sh "[ -d ./rpm ] || mkdir ./rpm"
     sh "docker run -v \$(pwd)/src:/data/demo-app -v \$(pwd)/rpm:/data/rpm --rm tenzer/fpm \
-          fpm -s dir -t rpm -n demo-app -v ${gitHash} \
+          -s dir -t rpm -n demo-app -v ${gitHash} \
             --description \"Demo PHP app\" \
             --directories /var/www/demo-app \
             --package /data/rpm/demo-app-${gitHash}.rpm \
@@ -26,7 +26,7 @@ node {
     sh "[ -d ~/repo/rpm/demo-app/ ] || mkdir -p ~/repo/rpm/demo-app/"
     sh "mv ./rpm/*.rpm ~/repo/rpm/demo-app/"
     sh "createrepo --update --cachedir ~/repo.cache ~/repo/"
-    sh "aws s3 sync ~/repo s3://YUM_REPO_NAME/ --region us-east-1 --delete"
+    sh "aws s3 sync ~/repo s3://MY_BUCKET_NAME/ --region us-east-1 --delete"
 
  stage "Check YUM repo"
     sh "sudo yum clean expire-cache >/dev/null"

@@ -19,5 +19,5 @@ end
 
 describe user('veselin') do
   it { should exist }
-  it { should have_authorized_key 'ssh-rsa AAAA...' }
+  it { should have_authorized_key 'ssh-rsa AAAAB3NzaC1yc2EA...' }
 end

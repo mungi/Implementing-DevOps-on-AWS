@@ -1,5 +1,5 @@
 {
-  "srcAmiId": "ami-6869aa05",
+  "srcAmiId": "ami-c58c1dd3",
   "amiName": "demo-app",
   "sshUser": "ec2-user",
   "instanceProfile": "demo-app",

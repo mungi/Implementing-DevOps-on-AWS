@@ -162,6 +162,7 @@ resource "aws_db_instance" "terraform" {
   port = "${var.rds-port}"
   vpc_security_group_ids = ["${aws_security_group.terraform-rds.id}"]
   db_subnet_group_name = "${aws_db_subnet_group.rds.id}"
+  skip_final_snapshot = true
 }
 
 
@@ -171,22 +172,20 @@ resource "aws_security_group" "terraform-elb" {
   name = "terraform-elb"
   description = "ELB security group"
   vpc_id = "${aws_vpc.terraform-vpc.id}"
-
   ingress {
     from_port = "80"
     to_port = "80"
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
   egress {
     from_port = 0
     to_port = 0
     protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
 }
+
 
 resource "aws_elb" "terraform-elb" {
   name = "terraform-elb"

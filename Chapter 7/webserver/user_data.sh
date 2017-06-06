@@ -19,14 +19,14 @@ filebeat:
   registry_file: /var/lib/filebeat/registry
 output:
   logstash:
-    hosts: ["10.0.1.132:5044"]
+    hosts: ["10.0.1.123:5044"]
 EOF
 
 service nginx start
 service filebeat start
 
 # Install Telegraf
-yum -y install https://dl.influxdata.com/telegraf/releases/telegraf-1.0.1.x86_64.rpm
+yum -y install https://dl.influxdata.com/telegraf/releases/telegraf-1.3.1-1.x86_64.rpm
 cat << EOF > /etc/telegraf/telegraf.conf
 
 [global_tags]

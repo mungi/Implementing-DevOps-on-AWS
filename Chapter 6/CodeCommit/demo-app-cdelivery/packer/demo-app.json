@@ -54,7 +54,8 @@
       "type": "shell",
       "inline": [ 
         "echo 'Installing Serverspec tests...'",
-        "sudo gem install --no-document rake serverspec",
+        "sudo yum install -y ruby-devel gcc",
+        "sudo gem install --no-document rake serverspec io-console",
         "echo 'Running Serverspec tests...'",
         "cd /tmp/serverspec && sudo /usr/local/bin/rake spec"
         ]

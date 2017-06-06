@@ -73,6 +73,6 @@
   },
   {
     "ParameterKey": "autoscalingGroupImageId",
-    "ParameterValue": "ami-08111162"
+    "ParameterValue": "ami-c58c1dd3"
   }
 ]

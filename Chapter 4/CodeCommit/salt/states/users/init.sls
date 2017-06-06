@@ -15,4 +15,4 @@ veselin:
 sudoers:
   file.managed:
    - name: /etc/sudoers.d/wheel
-   - contents: '%wheel  ALL=(ALL)  ALL'
+   - contents: '%wheel  ALL=(ALL) NOPASSWD: ALL'

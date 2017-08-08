@@ -4,7 +4,7 @@ include:
 jenkins_prereq:
   pkg.installed:
     - pkgs:
-      - java-1.7.0-openjdk
+      - java-1.8.0-openjdk
       - gcc
       - make
       - createrepo
@@ -12,7 +12,7 @@ jenkins_prereq:
 jenkins:
   pkg.installed:
     - sources:
-      - jenkins: http://mirrors.jenkins-ci.org/redhat-stable/jenkins-2.7.1-1.1.noarch.rpm
+      - jenkins: http://mirrors.jenkins-ci.org/redhat-stable/jenkins-2.60.2-1.1.noarch.rpm
     - require:
       - pkg: jenkins_prereq
 

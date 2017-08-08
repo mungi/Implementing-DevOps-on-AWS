@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install Filebeat and NGINX
-yum -y install https://download.elastic.co/beats/filebeat/filebeat-1.3.1-x86_64.rpm
+yum -y install https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.5.1-x86_64.rpm
 yum -y install nginx
 
 cat << EOF > /etc/filebeat/filebeat.yml
@@ -26,7 +26,7 @@ service nginx start
 service filebeat start
 
 # Install Telegraf
-yum -y install https://dl.influxdata.com/telegraf/releases/telegraf-1.3.1-1.x86_64.rpm
+yum -y install https://dl.influxdata.com/telegraf/releases/telegraf-1.3.5-1.x86_64.rpm
 cat << EOF > /etc/telegraf/telegraf.conf
 
 [global_tags]
